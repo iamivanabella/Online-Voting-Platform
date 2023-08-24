@@ -1,69 +1,26 @@
-
-// Initialize vote counts
-let votes1 = 0;
-let votes2 = 0;
-let votes3 = 0;
-let votes4 = 0;
-
-// Initialize chart instance
+let votes = [0, 0, 0, 0];
 let myChart;
 
-// Update the vote count, progress bar, and graph
 function updateVotes() {
-    const totalVotes = votes1 + votes2 + votes3 + votes4;
+    const totalVotes = votes.reduce((acc, cur) => acc + cur);
 
-    // Update the vote count display
-    $("#votes1").text(votes1);
-    $("#votes2").text(votes2);
-    $("#votes3").text(votes3);
-    $("#votes4").text(votes4);
+    for (let i = 0; i < 4; i++) {
+        const percentage = totalVotes === 0 ? 0 : (votes[i] / totalVotes) * 100;
+        $(`#votes${i + 1}`).text(votes[i]);
+        $(`#progress-bar${i + 1}`).css("width", percentage + "%").attr("aria-valuenow", percentage);
+    }
 
-    // Update the progress bars
-    const percentage1 = totalVotes === 0 ? 0 : (votes1 / totalVotes) * 100;
-    const percentage2 = totalVotes === 0 ? 0 : (votes2 / totalVotes) * 100;
-    const percentage3 = totalVotes === 0 ? 0 : (votes3 / totalVotes) * 100;
-    const percentage4 = totalVotes === 0 ? 0 : (votes4 / totalVotes) * 100;
-
-    $("#progress-bar1").css("width", percentage1 + "%");
-    $("#progress-bar1").attr("aria-valuenow", percentage1);
-
-    $("#progress-bar2").css("width", percentage2 + "%");
-    $("#progress-bar2").attr("aria-valuenow", percentage2);
-
-    $("#progress-bar3").css("width", percentage3 + "%");
-    $("#progress-bar3").attr("aria-valuenow", percentage3);
-
-    $("#progress-bar4").css("width", percentage4 + "%");
-    $("#progress-bar4").attr("aria-valuenow", percentage4);
-
-    // Update the bar graph
-    updateBarGraph([votes1, votes2, votes3, votes4]);
+    updateBarGraph(votes);
 }
 
-// Event handlers for voting buttons
-$("#vote1").click(function () {
-    votes1++;
-    updateVotes();
-});
+for (let i = 0; i < 4; i++) {
+    $(`#vote${i + 1}`).click(function () {
+        votes[i]++;
+        updateVotes();
+    });
+}
 
-$("#vote2").click(function () {
-    votes2++;
-    updateVotes();
-});
-
-$("#vote3").click(function () {
-    votes3++;
-    updateVotes();
-});
-
-$("#vote4").click(function () {
-    votes4++;
-    updateVotes();
-});
-
-// Initial plot and update of the bar graph
 function updateBarGraph(votesArray) {
-    // Destroy previous chart instance if exists
     if (myChart) {
         myChart.destroy();
     }
@@ -77,16 +34,16 @@ function updateBarGraph(votesArray) {
                 label: 'Votes',
                 data: votesArray,
                 backgroundColor: [
-                    'rgba(0, 123, 255, 0.5)', // bg-info color
-                    'rgba(40, 167, 69, 0.5)', // bg-danger color
-                    'rgba(23, 162, 184, 0.5)', // bg-success color
-                    'rgba(255, 193, 7, 0.5)', // bg-warning color
+                    'rgba(0, 123, 255, 0.5)',
+                    'rgba(40, 167, 69, 0.5)',
+                    'rgba(23, 162, 184, 0.5)',
+                    'rgba(255, 193, 7, 0.5)',
                 ],
                 borderColor: [
-                    'rgba(23, 162, 184, 1)', // bg-info color
-                    'rgba(40, 167, 69, 1)', // bg-danger color
-                    'rgba(23, 162, 184, 1)',  // bg-success color
-                    'rgba(255, 193, 7, 1)', // bg-warning color
+                    'rgba(23, 162, 184, 1)',
+                    'rgba(40, 167, 69, 1)',
+                    'rgba(23, 162, 184, 1)',
+                    'rgba(255, 193, 7, 1)',
                 ],
                 borderWidth: 1
             }]
@@ -106,5 +63,4 @@ function updateBarGraph(votesArray) {
     });
 }
 
-// Initial plot of the bar graph
-updateBarGraph([votes1, votes2, votes3, votes4]);
+updateBarGraph(votes);

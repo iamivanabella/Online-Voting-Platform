@@ -6,7 +6,7 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .card:first-child {
-    background-color: #f8f9fa; /* Background color for the first card */
+    background-color: #f8f9fa; 
 }
 .progress {
     height: 10px;
