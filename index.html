@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting Platform</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Cast Your Vote</h1>
+
+        <div class="row">
+            <!-- Left side: Nominees -->
+            <div class="col-md-6">
+                <!-- Nominee 1 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nominee 1</h5>
+                        <div class="text-center mb-3">
+                            <button class="btn btn-primary" id="vote1">Vote</button>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar1"></div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span id="votes1">0</span> Votes
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nominee 2 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nominee 2</h5>
+                        <div class="text-center mb-3">
+                            <button class="btn btn-primary" id="vote2">Vote</button>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar2"></div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span id="votes2">0</span> Votes
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nominee 3 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nominee 3</h5>
+                        <div class="text-center mb-3">
+                            <button class="btn btn-primary" id="vote3">Vote</button>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar3"></div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span id="votes3">0</span> Votes
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nominee 4 -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nominee 4</h5>
+                        <div class="text-center mb-3">
+                            <button class="btn btn-primary" id="vote4">Vote</button>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar4"></div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span id="votes4">0</span> Votes
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side: Vertical Bar Graph -->
+            <div class="col-md-6">
+                <h3 class="text-center mb-4">Total Votes</h3>
+                <!-- Vertical Bar Graph -->
+                <canvas id="bar-graph"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
